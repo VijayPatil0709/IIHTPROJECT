@@ -1,0 +1,61 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+<div class="sidenav">
+         <div class="login-main-text">
+            <h2><br><strong> Register Page</strong></h2>
+            <p>reRgister from here to access.</p>
+         </div>
+      </div>
+      <div class="main">
+         <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+                <form [formGroup]="userForm" (ngSubmit)="onSubmitUser()" align="center">
+					<h3>SIGN UP</h3>
+					<div class="form-group">
+                        <label for="firstname" class="sr-only">FirstName</label>
+                        <input type="text" formControlName="firstname" placeholder="FirstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" />
+                        <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+                            <div *ngIf="f.firstname.errors.required">FirstName is required</div>
+                        </div>                  
+                    </div>
+                      <div class="form-group mb-4">
+                        <label for="lastname" class="sr-only">LastName</label>
+                        <input type="lastname"formControlName="lastname" placeholder="LastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" />                
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="username" class="sr-only">LoginId</label>
+                        <input type="text"formControlName="username" placeholder="LoginId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                            <div *ngIf="f.username.errors.required">Username is required</div>
+                        </div>                  
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="contactnumber" class="sr-only">ContactNumber</label>
+                        <input type="text"formControlName="contactnumber" placeholder="ContactNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contactnumber.errors }" />
+                        <div *ngIf="submitted && f.contactnumber.errors" class="invalid-feedback">
+                            <div *ngIf="f.contactnumber.errors.required">ContactNumber is required</div>
+                        </div>                  
+                    </div>
+                    <div class="form-group">
+                        <label for="emailid" class="sr-only">Emailid</label>
+                        <input class="mb-4 form-control" formControlName="emailid" [ngClass]="{'warningOutline' : emailValid}" type="text" (keyup) ="emailValidation(emailid)" #emailid name="emailid" placeholder="Enter a valid email address">                     
+                    </div>
+                      <div class="form-group mb-4">
+                        <label for="password" class="sr-only">Password</label>
+                        <input class="mb-4 form-control" formControlName="password" type="password" (keyup)="checkPrePassword(password)" #password name="password" placeholder="Enter password">                 
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="confirmpassword" class="sr-only">ConfirmPassword</label>
+                        <input class="mb-4 form-control" formControlName="confirmpassword" type="password" [ngClass]="{'warningOutline' : passwordValidation}" (keyup)="checkPassword(password,confirmpassword)" #confirmpassword name="confirmpassword" placeholder="Enter password again">                
+                    </div>
+                    <div class="form-group mb-4">
+                        <label>ProfilePic</label>
+                        <input type="file" formControlName="imagename" name="imagename"  (change)="fileEvent($event)" />                
+                    </div>
+                      <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="REGISTER">
+				</form>            </div>
+         </div>
+      </div>
